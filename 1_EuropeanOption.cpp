@@ -22,40 +22,6 @@ Goal : Compute Calls and Puts and compare it to Interactive Brokers option price
 #include <iostream>
 #include <cmath>
 
-// Simpson Integration rule
-
-double simpson(double a, double b,int n, double (*f)(double x)){
-
-    double h = (b-a)/n;
-
-    double sum1=0.0;
-    for (int i=1; i<n; i+=2){
-        sum1 += f(a + i * h);
-    }
-
-    double sum2=0.0;
-    for (int i=2; i<n; i+=2){
-        sum2+=f(a+i*h);
-    }
-
-    return (f(a)+f(b)+2*sum2+4*sum1)*h/3;
-}
-
-double integral(double a, double b, int n, double(*f)(double x)){
-    double h = (b - a)/n;
-    double area = 0.0;
-    double y = 0;
-
-    for(int i = 0; i < n; ++i)
-    {
-        y = f(a + (i + 0.5)*h);
-        area += y*h;
-    }
-
-    return area;
-}
-
-
 //-----------------------------------------------------------------------------
 
 // European Call Price 

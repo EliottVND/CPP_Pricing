@@ -1,2 +1,2 @@
 # CPP_Pricing
-Using C++ for pricing bunch of financial derivatives
+Learning C++ by pricing bunch of financial derivatives

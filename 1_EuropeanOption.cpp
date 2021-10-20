@@ -39,29 +39,6 @@ where :
 log stands for natural logarithm
 */
 
-double d1(const double S, const double K, const double r, const double v, const double T){
-    return (log(S/K)+(r+0.5*v*v)*T)/(v*pow(T,0.5));
-}
-
-double d2(const double S, const double K, const double r, const double v, const double T){
-    return d1(S,K,r,v,T)-v*pow(T,0.5);
-}
-
-double f(double x){
-        return exp(-pow(x,2)*0.5)/sqrt(2*M_PI);
-    }
-
-double N(const double value){
-   return 0.5 * erfc(-value * sqrt(0.5));
-}
-
-
-double Call(const double S,const double K, const double r,const double v, const double T){
-    return S*N(d1(S,K,r,v,T))-K*exp(-r*T)*N(d2(S,K,r,v,T));
-}
-
-//-----------------------------------------------------------------------------
-
 // European Put Price 
 
 /*
@@ -84,11 +61,11 @@ double Put(const double S,const double K, const double r,const double v, const d
 
 int main(int argc, char **argv) {
     
-    double S = std::__cxx11::stod(argv[1]);
-    double K = std::__cxx11::stod(argv[2]);
-    double r = std::__cxx11::stod(argv[3]);
-    double v = std::__cxx11::stod(argv[4]);
-    double T = std::__cxx11::stod(argv[5]);
+    double S = std::stod(argv[1]);
+    double K = std::stod(argv[2]);
+    double r = std::stod(argv[3]);
+    double v = std::stod(argv[4]);
+    double T = std::stod(argv[5]);
 
     if (S<0 || K<0 || r<0 || v<0 || T<0){
         std::cout << "Wrong args\n";

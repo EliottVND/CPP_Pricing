@@ -31,12 +31,11 @@ Goal : - Compute Calls and Puts and compare it to Interactive Brokers option pri
 
 int main(int argc, char **argv) {
   
-  double S = 100.0;  // Underlying spot price
-  double K = 100.0;  // Strike price
-  double r = 0.05;   // Risk-free rate (5%)
-  double v = 0.2;		 // volatility
-  double T = 1.0;    // One year until expiry
-  
+  double S = 164.51;           // Underlying spot price ($)
+  double K = 150.0;            // Strike price
+  double r = 0.0183;           // Risk-free rate
+  double v = 0.37936;          // Implied volatility
+  double T = 0.11506849315;    // One year until expiry  
 
   // Create the Black-Scholes Call functor
   BlackScholesCall bsc(S, K, r, T);
@@ -61,11 +60,11 @@ int main(int argc, char **argv) {
 
   // Computing implied vol for Call
 
-  double C_M = 10.5; // Option market price
+  double C_M = 17; // Option market price
 
   // Interval Bisection parameters
   double low_vol = 0.05;
-  double high_vol = 0.35;
+  double high_vol = 0.5;
   double episilon = 0.001;
 
   // Calculate the implied volatility
